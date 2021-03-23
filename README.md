@@ -1,2 +1,2 @@
 # Messenger
-AngelGame webgl project
+Angel webgl game
