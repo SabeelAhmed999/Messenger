@@ -10,47 +10,50 @@ public class AngelController : MonoBehaviour
     public GameObject Sound;
     public Slider healthSlider;
     public GameObject[] sparkParticles;
-    public Transform rb;
+    public Rigidbody rbPlayer;
+    public float sidewaysForce=100f;
+    public float forwardForce = 500f;
     float HAxis,VAxis;
     public bool normalSpeed,activeShield;
     public int angelHealth;
     /// <summary>
     public float speed = 20f;
     public float rotationSpeed,rotation = 10;
+
     /// </summary>
     // Start is called before the first frame update
 
     private void Awake()
     {
-        healthSlider = GameObject.FindGameObjectWithTag("Health").GetComponent<Slider>();
-        healthSlider.maxValue = angelHealth;
-        healthSlider.value = angelHealth;
+        //healthSlider = GameObject.FindGameObjectWithTag("Health").GetComponent<Slider>();
+        //healthSlider.maxValue = angelHealth;
+        //healthSlider.value = angelHealth;
     }
 
     void Start()
     {
         
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
-        if(GameManager.Levelno<6)
-        {
-            angelHealth = 5;
-        }
+        //if(GameManager.Levelno<6)
+        //{
+        //    angelHealth = 5;
+        //}
 
-        if (GameManager.Levelno < 10 && GameManager.Levelno > 5)
-        {
-            angelHealth = 4;
-        }
+        //if (GameManager.Levelno < 10 && GameManager.Levelno > 5)
+        //{
+        //    angelHealth = 4;
+        //}
 
-        if (GameManager.Levelno < 16 && GameManager.Levelno > 10)
-        {
-            angelHealth = 3;
-        }
+        //if (GameManager.Levelno < 16 && GameManager.Levelno > 10)
+        //{
+        //    angelHealth = 3;
+        //}
 
-        if (GameManager.Levelno < 21 && GameManager.Levelno > 15)
-        {
-            angelHealth = 2;
-        }
+        //if (GameManager.Levelno < 21 && GameManager.Levelno > 15)
+        //{
+        //    angelHealth = 2;
+        //}
 
 
     }
@@ -58,22 +61,35 @@ public class AngelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-        float translation = 1*speed;
-        if(translation<0)
-        {
-            translation = translation * 0;
-        }
-        translation *= Time.deltaTime;
-        rotation *= Time.deltaTime;
-        transform.Translate(0f, 0f, translation);
-        transform.Rotate(0f, rotation, 0f);
+       // rbPlayer.AddForce(0, 0, forwardForce * Time.deltaTime);
+        //rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+        //float translation = 1*speed;
+        //if(translation<0)
+        //{
+        //    translation = translation * 0;
+        //}
+        //translation *= Time.deltaTime;
+        //rotation *= Time.deltaTime;
+        //transform.Translate(0f, 0f, translation);
+        //transform.Rotate(0f, rotation, 0f);
 
         VAxis = Input.GetAxis("Vertical");
         HAxis = Input.GetAxis("Horizontal");
 
+        //if (Input.GetKey("d"))
+        //{
+        //    // Add a force to the right
+        //    rbPlayer.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        //}
 
-        if(normalSpeed)
+        //if (Input.GetKey("a"))
+        //{
+        //    // Add a force to the left
+        //    rbPlayer.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        //}
+
+
+        if (normalSpeed)
         {
 
             Sound.SetActive(true);

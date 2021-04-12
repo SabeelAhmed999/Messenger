@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
     public CameraSmooth cameraSmooth;
     public static int Levelno=0;
     public static bool gameOver;
-    public AngelController angel;
+    public PlayerMovement angel;
     public  int triggerNo = 0;
     public  GameObject[] CubeTriggers;
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     void Awake()
     {
         if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -61,9 +61,7 @@ public class GameManager : MonoBehaviour
         //gameOverStates.transform.GetChild(2).gameObject.SetActive(false);
         gameOver = false;
         loading.SetActive(true);
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
     }
 
     public void HomeScreen()
@@ -81,9 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-
         Time.timeScale = 1;
-
     }
 
     public void NextScene(int sceneIndex)
@@ -111,6 +107,5 @@ public class GameManager : MonoBehaviour
     void RestartHold()
     {
         loading.SetActive(false);
-
     }
 }
